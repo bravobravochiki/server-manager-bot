@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .dark ::selection {
+    background-color: theme('colors.dark.primary');
+    color: theme('colors.dark.text.primary');
+  }
+
+  /* Mobile-specific styles */
+  @media (max-width: 428px) {
+    html {
+      -webkit-tap-highlight-color: transparent;
+      font-size: 14px; /* Reduce base font size for mobile */
+    }
+
+    /* Optimize touch targets */
+    button, 
+    [role="button"],
+    input,
+    select {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+
+    /* Adjust spacing */
+    .p-4 {
+      padding: 12px;
+    }
+
+    .p-6 {
+      padding: 16px;
+    }
+
+    .px-4 {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+    .py-4 {
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+
+    .space-x-4 > * + * {
+      margin-left: 12px;
+    }
+
+    .space-y-4 > * + * {
+      margin-top: 12px;
+    }
+
+    /* Adjust text sizes */
+    .text-xs {
+      font-size: 11px;
+    }
+
+    .text-sm {
+      font-size: 12px;
+    }
+
+    .text-base {
+      font-size: 14px;
+    }
+
+    .text-lg {
+      font-size: 16px;
+    }
+
+    .text-xl {
+      font-size: 18px;
+    }
+
+    .text-2xl {
+      font-size: 20px;
+    }
+
+    /* Optimize scrolling */
+    * {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+}
+
+/* Animations */
+@keyframes balanceUpdate {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-balance-update {
+  animation: balanceUpdate 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+/* Dark mode transitions */
+.dark * {
+  @apply transition-colors duration-200;
+}
+
+/* Mobile swipe gestures */
+.swipe-action {
+  touch-action: pan-y;
+  user-select: none;
+}
+
+/* Telegram Mini App specific styles */
+.telegram-app {
+  /* Match Telegram's native UI */
+  --tg-theme-bg-color: var(--background-color, #ffffff);
+  --tg-theme-text-color: var(--text-color, #000000);
+  --tg-theme-hint-color: var(--hint-color, #999999);
+  --tg-theme-link-color: var(--link-color, #2481cc);
+  --tg-theme-button-color: var(--button-color, #2481cc);
+  --tg-theme-button-text-color: var(--button-text-color, #ffffff);
+
+  background-color: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color);
+}
+
+.telegram-app button {
+  background-color: var(--tg-theme-button-color);
+  color: var(--tg-theme-button-text-color);
+}
+
+.telegram-app a {
+  color: var(--tg-theme-link-color);
+}
+
+/* Mobile-optimized components */
+@media (max-width: 428px) {
+  .mobile-header {
+    height: 48px;
+    padding: 8px 12px;
+  }
+
+  .mobile-button {
+    height: 40px;
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .mobile-input {
+    height: 40px;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .mobile-card {
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+  }
+
+  .mobile-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mobile-menu {
+    width: 280px;
+  }
+}
